@@ -1,12 +1,28 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react'
+import { getAge } from '../../utils'
+import clsx from 'clsx'
 
-import "./User.scss";
+import './User.scss'
+
+const LikeIcon = () => <i class="fa fa-heart" aria-hidden="true"></i>
+const DislikeIcon = () => <i class="fa fa-times" aria-hidden="true"></i>
 
 const User = (props) => {
-  const { imgSrc = "", changeUser = () => {} } = props;
+  const {
+    imgSrc = '',
+    changeUser = () => {},
+    user = {},
+    action = { like: false, dislike: false },
+    actionCount = { likeCount: 0, dislikeCount: 0 },
+  } = props
 
-  const userRef = useRef();
+  const userRef = useRef()
+  const { firstName = 'Kyan', lastName = 'Jung', dateOfBirth = '' } = user
 
+  const Icon = () => (like ? <LikeIcon /> : <DislikeIcon />)
+
+  const { like, dislike } = action
+  const { likeCount, dislikeCount } = actionCount
   return (
     <div className="user" ref={userRef}>
       <div className="container">
@@ -14,17 +30,44 @@ const User = (props) => {
 
         <div className="info">
           <div className="top">
-            <span className="name">Lynk</span>
-            <div className="age">
-              <span>20</span>
-              <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-            </div>
+            <span className="name">{`${firstName} ${lastName}`}</span>
+            {/* {dateOfBirth && ( */}
+            {true && (
+              <div className="age">
+                <span>{getAge(dateOfBirth) || 18}</span>
+                <i className="fa fa-birthday-cake" aria-hidden="true"></i>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="action-info">
+          <div className="action-count">
+            <LikeIcon />
+            <span className="number">{likeCount}</span>
+          </div>
+          <div className="action-count">
+            <DislikeIcon />
+            <span className="number">{dislikeCount}</span>
           </div>
         </div>
       </div>
-      User
-    </div>
-  );
-};
 
-export default User;
+      <div className={clsx('icon', like && 'like', dislike && 'dislike')}>
+        <div className="icon--big">
+          <Icon />
+        </div>
+
+        <div className="icon--big">
+          <Icon />
+        </div>
+
+        <div className="icon--big">
+          <Icon />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default User

@@ -1,5 +1,67 @@
+@import '../../scss/variables';
+
 .screen {
   width: 350px;
   height: 500px;
   background-color: rgb(236, 236, 236);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  top: 0;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: auto;
+  min-height: 60px;
+
+  .icon {
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgb(187, 187, 187);
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    color: white;
+    transition: 0.2 ease-in;
+
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 6px rgb(116, 116, 116);
+
+      i {
+        animation: iconAnimate 3s ease-in infinite;
+      }
+    }
+  }
+  .dislike {
+    font-size: 1.4rem;
+    background-color: $dislike-color;
+  }
+
+  .like {
+    background-color: $like-color;
+  }
+
+  @keyframes iconAnimate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 }

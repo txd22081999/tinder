@@ -1,0 +1,8 @@
+export const getAge = (dob) => {
+  //   console.log(dob)
+  //   return 'a'
+  if (!dob) return ''
+  let today = new Date()
+  dob = new Date(dob)
+  return today.getFullYear() - dob.getFullYear()
+}
