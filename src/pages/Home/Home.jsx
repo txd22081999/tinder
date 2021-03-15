@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 
 import User from '../../components/User'
-import { LIKE, DISLIKE, LIMIT, DEBOUNCE_TIME, APP_ID } from '../../constants'
+import {
+  LIKE,
+  DISLIKE,
+  LIMIT,
+  DEBOUNCE_TIME,
+  APP_ID,
+  BASE_URL,
+} from '../../constants'
 
 import './Home.scss'
 
@@ -43,14 +50,11 @@ const Home = () => {
   }, [action])
 
   const getUsers = async () => {
-    const res = await fetch(
-      `https://dummyapi.io/data/api/user?limit=${LIMIT}`,
-      {
-        headers: {
-          'app-id': APP_ID,
-        },
-      }
-    )
+    const res = await fetch(`${BASE_URL}?limit=${LIMIT}`, {
+      headers: {
+        'app-id': APP_ID,
+      },
+    })
     const { data = [] } = await res.json()
     setUserList(data)
   }

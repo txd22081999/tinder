@@ -17,7 +17,7 @@ const User = (props) => {
   } = props
 
   const userRef = useRef()
-  const { firstName = 'Kyan', lastName = 'Jung', dateOfBirth = '' } = user
+  const { firstName = '', lastName = '', dateOfBirth = '' } = user
 
   const Icon = () => (like ? <LikeIcon /> : <DislikeIcon />)
 
