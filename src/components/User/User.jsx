@@ -16,9 +16,8 @@ const User = (props) => {
     animate,
   } = props
 
-  const userRef = useRef()
+  const userRef = useRef(null)
   const { firstName = '', lastName = '', dateOfBirth = '' } = user
-
   const Icon = () => (like ? <LikeIcon /> : <DislikeIcon />)
 
   const { like, dislike } = action
@@ -31,10 +30,9 @@ const User = (props) => {
         <div className="info">
           <div className="top">
             <span className="name">{`${firstName} ${lastName}`}</span>
-            {/* {dateOfBirth && ( */}
-            {true && (
+            {dateOfBirth && (
               <div className="age">
-                <span>{getAge(dateOfBirth) || 18}</span>
+                <span>{getAge(dateOfBirth)}</span>
                 <i className="fa fa-birthday-cake" aria-hidden="true"></i>
               </div>
             )}
