@@ -1,4 +1,4 @@
-@import "./scss/variables.scss";
+@import "./scss/_variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"); // Roboto font
 
 *,
@@ -16,10 +16,25 @@ body {
   place-items: center;
   background-image: $body-bg-color;
   font-family: "Roboto", sans-serif;
+  background-size: 400% 400%;
+  animation: moveBackground 10s ease-in-out infinite;
 }
 
 button {
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }

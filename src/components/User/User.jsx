@@ -10,10 +10,10 @@ const DislikeIcon = () => <i class="fa fa-times" aria-hidden="true"></i>
 const User = (props) => {
   const {
     imgSrc = '',
-    changeUser = () => {},
     user = {},
     action = { like: false, dislike: false },
     actionCount = { likeCount: 0, dislikeCount: 0 },
+    animate,
   } = props
 
   const userRef = useRef()
@@ -53,7 +53,13 @@ const User = (props) => {
         </div>
       </div>
 
-      <div className={clsx('icon', like && 'like', dislike && 'dislike')}>
+      <div
+        className={clsx(
+          'icon',
+          animate && like && 'like',
+          animate && dislike && 'dislike'
+        )}
+      >
         <div className="icon--big">
           <Icon />
         </div>

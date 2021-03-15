@@ -1,4 +1,4 @@
-@import '../../scss/variables';
+@import '../../constants/variables';
 
 .user {
   width: 100%;
@@ -16,19 +16,20 @@
     width: 96%;
     height: 100%;
     margin: 0 auto;
-
+    border-radius: 10px;
+    overflow: hidden;
+    
     img {
-      border-radius: 5px;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 8px;
     }
 
     .info {
-      // margin-top: -25%;
       transform: translateY(-75px);
       color: white;
-      padding-left: 1em;
+      padding: 0 1em;
       background: linear-gradient(to top, rgb(90, 90, 90), transparent);
       min-height: 70px;
       padding-top: 1em;
@@ -36,12 +37,12 @@
       .top {
         display: flex;
         align-items: baseline;
+        justify-content: space-between;
       }
 
       .name {
         font-size: 1.3rem;
         font-weight: 600;
-        margin-right: 0.3em;
       }
 
       .age {
@@ -80,16 +81,13 @@
   }
 
   .dislike {
-    i {
-      // font-size: 1.4rem;
-    }
     color: $dislike-color;
   }
 
   .action-info {
     position: absolute;
     top: 50%;
-    right: 0.5em;
+    right: 0.8em;
     transform: translateY(-50%);
 
     .action-count {
@@ -107,7 +105,7 @@
       .number {
         margin-top: 1px;
         font-size: 0.8rem;
-        font-weight: 600;
+        // font-weight: 600;
         // color: $gray-color;
       }
 
